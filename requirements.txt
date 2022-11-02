@@ -8,3 +8,4 @@ pandas
 pandas
 sqlalchemy
 psycopg2
+poetry
