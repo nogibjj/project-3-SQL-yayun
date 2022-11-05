@@ -1,13 +1,11 @@
-// Update the VARIANT arg in docker-compose.yml to pick a Python version
 {
-	"name": "Python 3 & PostgreSQL",
+	"name": "Anaconda (Python 3) & PostgreSQL",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// This can be used to network with other containers or the host.
-	"forwardPorts": [5000, 5432],
+	// "forwardPorts": [5432],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "virtualenv ~/.venv && echo 'source ~/.venv/bin/activate' >> ~/.bashrc && make install",
