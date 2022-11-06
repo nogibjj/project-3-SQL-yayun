@@ -29,6 +29,9 @@ def create_db_table():
 	cursor.execute(cr_co2)
 	cursor.execute(cr_land)
 
+	connect.commit()
+	connect.close()
+
 if __name__ == "__main__":
 	create_db_table()
 	
