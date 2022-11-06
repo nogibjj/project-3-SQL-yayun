@@ -2,11 +2,6 @@ click
 pytest
 pylint
 ipython
-sklearn
 numpy
 pandas
-pandas
 sqlalchemy
-psycopg2
-poetry
-csv
