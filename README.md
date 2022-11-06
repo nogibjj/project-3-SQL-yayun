@@ -16,6 +16,7 @@ This is a SQL data analysis project from YAYUN HUANG for DUKE MIDS IDS706 course
 
 * What are gdp-per-capita, co2-emission-per-person and co2-emission-per-sqkm for the countries found in the previous question?  
 `./cli.py co2-perunit`
+`Enter country name(First letter uppercase): Taiwan`
 
 * Which industry cause the most CO2 emission in a specific country?  
 `./cli.py co2-industry`
