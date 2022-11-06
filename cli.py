@@ -57,21 +57,17 @@ def co2_perunit():
     per_unit()
 
 
-@cli.command()
-def cumco2_highest():
-    """Find country with the highest cumulative co2 since 1990 in 2018"""
-    cum_co2_highest()
-
 
 @cli.command()
-@click.option("--country", prompt="Enter country name(First letter uppercase)")
-def co2_industry(country):
+@click.option("--country_name", prompt="Enter country name(First letter uppercase)")
+def co2_industry(country_name):
     """Find cumulative CO2 emission in different industry of intersted country"""
-    industry_co2(country)
+    industry_co2(cursor = connect_db(),country = country_name)
 
 
 @cli.command()
 def high_cumCo2():
+    """Find country with the highest cumulative co2 since 1995"""
     cum_co2()
 
 

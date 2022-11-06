@@ -112,9 +112,11 @@ def industry_co2(cursor=connect_db(), country="China"):
         SUM(coal_co2) OVER (PARTITION BY country ORDER BY year_) AS cumulative_coal_co2,
         SUM(gas_co2) OVER (PARTITION BY country ORDER BY year_) AS cumulative_gas_co2,
         SUM(oil_co2) OVER (PARTITION BY country ORDER BY year_) AS cumulative_oil_co2,
+        SUM(flaring_co2) OVER (PARTITION BY country ORDER BY year_) AS cumulative_flaring_co2,
         SUM(other_industry_co2) OVER (PARTITION BY country ORDER BY year_) AS cumulative_other_co2
         FROM co2
-        WHERE (year_ <= 2018) AND (year_ > 2008) AND (country = {country})
+        WHERE (year_ <= 2018) AND (year_ > 2008) AND (country = '{country}')
+        ORDER BY year_ DESC
         LIMIT 3   
     """
     q4_us = """
@@ -127,11 +129,12 @@ def industry_co2(cursor=connect_db(), country="China"):
         SUM(other_industry_co2) OVER (PARTITION BY country ORDER BY year_) AS cumulative_other_co2
         FROM co2
         WHERE (year_ <= 2018) AND (year_ > 2008) AND (country = 'United States')
-        LIMIT 1   
+        ORDER BY year_ DESC
+        LIMIT 3  
     """
 
     industry_dfc = create_df(cursor.execute(q4_china).fetchall(), cursor)
-    print("CO2 emission from each industry in China:")
+    print(f"CO2 emission from each industry in {country}:")
     print(industry_dfc)
 
     industry_dfus = create_df(cursor.execute(q4_us).fetchall(), cursor)
@@ -148,13 +151,13 @@ def cum_co2(cursor=connect_db()):
         WITH t1 AS(
         SELECT year_, country, 
         SUM(co2) OVER (PARTITION BY country ORDER BY year_) AS cumulative_co2 
-        FROM (SELECT * FROM co2 WHERE year_ >= 1990) sub)
+        FROM (SELECT * FROM co2 WHERE year_ >= 1995) sub)
                 
         SELECT a.year_, a.country
         FROM t1 as a
         JOIN (SELECT year_, MAX(cumulative_co2) max_cum FROM t1 GROUP BY year_) b
         ON a.year_ = b.year_ AND a.cumulative_co2 = b.max_cum
-        WHERE a.year_ > 2000
+        WHERE a.year_ > 1995
     """
     df = create_df(cursor.execute(q5).fetchall(), cursor)
     print("The country with highest cumulative CO2 emission since 1995")
