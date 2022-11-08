@@ -9,7 +9,6 @@ from a2_querydb import (
     create_df,
     top10_2018,
     per_unit,
-    cum_co2_highest,
     industry_co2,
     cum_co2
 )
