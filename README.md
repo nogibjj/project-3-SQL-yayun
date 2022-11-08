@@ -1,5 +1,5 @@
 # project-3-SQL-yayun
-[![Python application test with Github Actions using devcontainers](https://github.com/nogibjj/project-3-SQL-yayun/actions/workflows/main.yml/badge.svg)](https://github.com/nogibjj/project-3-SQL-yayun/actions/workflows/main.yml)
+[![Scaffolding with Github Actions](https://github.com/nogibjj/project-3-SQL-yayun/actions/workflows/main.yml/badge.svg)](https://github.com/nogibjj/project-3-SQL-yayun/actions/workflows/main.yml)
 
 This is a SQL data analysis project from YAYUN HUANG for DUKE MIDS IDS706 course.
 
