@@ -22,7 +22,7 @@ def initial_build():
     data_co2 = csv.reader(file_co2)
     next(data_co2)  # pass header row
 
-    file_land = open(land_path,encoding="utf8")
+    file_land = open(land_path, encoding="utf8")
     data_land = csv.reader(file_land)
     next(data_land)  # pass header row
 

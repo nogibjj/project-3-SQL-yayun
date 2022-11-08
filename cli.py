@@ -10,7 +10,7 @@ from a2_querydb import (
     top10_2018,
     per_unit,
     industry_co2,
-    cum_co2
+    cum_co2,
 )
 
 # build a click group
@@ -39,7 +39,7 @@ def cli_query(query):
     # connect to database
     connect = sqlite3.connect("co2db")
     cursor = connect.cursor()
-    df = create_df(cursor.execute(query).fetchall(),connect_db())
+    df = create_df(cursor.execute(query).fetchall(), connect_db())
     print(df)
 
 
@@ -56,12 +56,11 @@ def co2_perunit():
     per_unit()
 
 
-
 @cli.command()
 @click.option("--country_name", prompt="Enter country name(First letter uppercase)")
 def co2_industry(country_name):
     """Find cumulative CO2 emission in different industry of intersted country"""
-    industry_co2(cursor = connect_db(),country = country_name)
+    industry_co2(cursor=connect_db(), country=country_name)
 
 
 @cli.command()
