@@ -39,6 +39,7 @@ def top10_2018(cursor=connect_db()):
     print(low_df)
     low_avg_df = int(cursor.execute(low_avearge).fetchall()[0][0])
     print(f"The average GDP of these 10 countries is {low_avg_df} millions.")
+    return low_df
 
 
 # query 2:
@@ -79,6 +80,7 @@ def per_unit(cursor=connect_db()):
         f"In the last 10 co2 emission countries, \nco2 emission per person: {np.round(low_df.iloc[0,0])} gram CO2.\nco2 emission per sq.km : {np.round(low_df.iloc[0,1])} gram CO2."
     )
     print(f"GDP per capita: {np.round(low_df.iloc[0,2],3)} K.")
+    return low_df
 
 
 # query 3
@@ -99,6 +101,7 @@ def cum_co2_highest(cursor=connect_db()):
         LIMIT 1"""
     country = create_df(cursor.execute(q3).fetchall(), cursor).iloc[0, 1]
     print(f"From 2008 till 2018, {country} has the highest cumulative CO2 emission.")
+    return country
 
 
 # query 4
@@ -140,6 +143,7 @@ def industry_co2(cursor=connect_db(), country="China"):
     industry_dfus = create_df(cursor.execute(q4_us).fetchall(), cursor)
     print("CO2 emission from each industry in US:")
     print(industry_dfus)
+    return industry_dfus
 
 
 # query 5
@@ -162,4 +166,4 @@ def cum_co2(cursor=connect_db()):
     df = create_df(cursor.execute(q5).fetchall(), cursor)
     print("The country with highest cumulative CO2 emission since 1995")
     print(df)
-    return cursor
+    return df
