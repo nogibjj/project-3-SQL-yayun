@@ -1,4 +1,4 @@
-name: Scaffolding with Github Actions
+name: Testing and Linting with Github Actions
 on: [push]
 jobs:
   build:
